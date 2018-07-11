@@ -1,3 +1,40 @@
-mdb-header {
+@import '../../theme/variables.scss';
 
+.toolbar {
+  .mdb-logo-wrapper {
+    text-align: center;
+    padding: 0 90px 1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    line-height: 1;
+
+    .mdb-icon-logo {
+      color: $header-logo-color;
+      position: relative;
+      top: 2px;
+    }
+
+    &.mdb-logo-sidemenu-wrapper {
+      padding-right: 15px;
+
+      .toolbar-title {
+        text-align: right;
+      }
+    }
+  }
+
+  .bar-buttons-md[start] {
+    -webkit-order: 1;
+   -ms-flex-order: 1;
+   order: 1;
+   -webkit-box-ordinal-group: 2;
+  }
+
+  .bar-button {
+    font-size: 2rem;
+  }
 }

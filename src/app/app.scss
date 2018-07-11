@@ -25,3 +25,16 @@
 .mdb-icon-logo:before {
   content: "\e900";
 }
+
+
+.menu-inner {
+  .list {
+    .item {
+      padding-left: 0;
+
+      .item-inner {
+        padding-left: 16px;
+      }
+    }
+  }
+}
