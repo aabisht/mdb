@@ -8,10 +8,12 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MdbHeaderComponent } from '../components/mdb-header/mdb-header';
 
 @NgModule({
   declarations: [
     MyApp,
+    MdbHeaderComponent,
     HomePage,
     ListPage
   ],
@@ -22,6 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MdbHeaderComponent,
     HomePage,
     ListPage
   ],
