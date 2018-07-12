@@ -44,8 +44,10 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  toggleDropdown(name: string) {
-    debugger;
-    // document.getElementById(name).show
+  toggleDropdown(name: string, event: any) {
+    $(event.currentTarget).siblings('.item').removeClass('active');
+    $('#'+name).siblings('.list').slideUp();
+    $('#'+name).slideToggle();
+    $(event.currentTarget).toggleClass('active');
   }
 }

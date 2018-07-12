@@ -10,7 +10,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content class="mdb-side-menu-wrapper">
     <ion-list>
       <!-- <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
@@ -18,15 +18,52 @@
       <button menuClose ion-item detail-none>
         <ion-icon name="contact"></ion-icon> Login / SignUp
       </button>
-      <button ion-item (click)="toggleDropdown('discover')">
+      <button ion-item detail-none (click)="toggleDropdown('discover', $event)">
         <ion-icon name="clock"></ion-icon> Discover
+        <ion-icon name="arrow-forward" md="md-arrow-dropright" class="drop-arrow"></ion-icon>
       </button>
-      <ion-list hidden id="discover">
+      <ion-list class="hidden" id="discover">
         <button menuClose ion-item detail-none>
           Movies
         </button>
         <button menuClose ion-item detail-none>
           TV Shows
+        </button>
+      </ion-list>
+      <button ion-item detail-none (click)="toggleDropdown('movies', $event)">
+        <ion-icon name="film"></ion-icon> Movies
+        <ion-icon name="arrow-forward" md="md-arrow-dropright" class="drop-arrow"></ion-icon>
+      </button>
+      <ion-list class="hidden" id="movies">
+        <button menuClose ion-item detail-none>
+          Popular
+        </button>
+        <button menuClose ion-item detail-none>
+          Top Rated
+        </button>
+        <button menuClose ion-item detail-none>
+          Upcoming
+        </button>
+        <button menuClose ion-item detail-none>
+          Now Playing
+        </button>
+      </ion-list>
+      <button ion-item detail-none (click)="toggleDropdown('tvShows', $event)">
+        <ion-icon name="desktop"></ion-icon> TV Shows
+        <ion-icon name="arrow-forward" md="md-arrow-dropright" class="drop-arrow"></ion-icon>
+      </button>
+      <ion-list class="hidden" id="tvShows">
+        <button menuClose ion-item detail-none>
+          Popular
+        </button>
+        <button menuClose ion-item detail-none>
+          Top Rated
+        </button>
+        <button menuClose ion-item detail-none>
+          On TV
+        </button>
+        <button menuClose ion-item detail-none>
+          Airing Today
         </button>
       </ion-list>
     </ion-list>
