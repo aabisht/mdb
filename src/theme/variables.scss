@@ -47,6 +47,9 @@ $header-logo-color: color($colors, primary);
 
 $sidebar-menu-active-color: color($colors, primary);
 
+$input-border-color: lighten(color($colors, dark), 50%);
+$input-border-active-color: color($colors, primary);
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

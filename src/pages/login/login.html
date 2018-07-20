@@ -1,0 +1,55 @@
+<!-- <ion-header>
+  <ion-navbar>
+
+  <ion-buttons start>
+    <button ion-button (click)="dismiss()">
+      <span ion-text color="primary" showWhen="ios">Cancel</span>
+      <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title>Modals</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content class="login-wrapper">
+
+  <div class="vh-center-container-wrapper">
+    <!-- <div class="login-container">
+        <div class="header-logo-wrapper">
+          <i class="mdb-icon-logo"></i>
+          <h1><strong>Sign in</strong></h1>
+        </div>
+    </div> -->
+    <ion-card class="login-container">
+
+        <ion-card-header>
+          <ion-icon name="md-close" (click)="dismiss()"></ion-icon>
+          <i class="mdb-icon-logo"></i>
+          <h1><strong>Sign in</strong></h1>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+
+            <ion-item>
+              <ion-label floating>Username</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+          </ion-list>
+
+          <div padding class="clearfix">
+            <button ion-button clear class="pull-left clear-btn">Create Account</button>
+            <button ion-button class="pull-right">Login</button>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+  </div>
+
+</ion-content>
