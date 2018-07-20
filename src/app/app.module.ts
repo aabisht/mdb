@@ -1,3 +1,15 @@
+import { ExternalIdService } from './../services/movies/external-ids/external-ids.service';
+import { SimilarMovieService } from './../services/movies/similar-movies/similar-movies.service';
+import { MovieReviewService } from './../services/movies/moview-review/movie-review.service';
+import { GetMovieDetailService } from './../services/movies/movie-details/get-movie-detail.service';
+import { GetMovieCreditsService } from './../services/movies/movie-credits/get-movie-credits.service';
+import { AccountService } from './../services/account/account-detail/account.service';
+import { LoginCheckService } from './../services/login-check/login-check.service';
+import { AuthenticationService } from './../services/authentication/authentication.service';
+import { FooterBannerService } from './../services/footer-banner/footer-banner.service';
+import { OnTheAirTVService } from './../services/tv/on-the-air.service';
+import { NowPlayingMovieService } from './../services/movies/now-playing/now-playing.service';
+import { DiscoverMovieService } from './../services/discover/discover-movie.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -34,7 +46,19 @@ import { LoginPage } from '../pages/login/login';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DiscoverMovieService,
+    NowPlayingMovieService,
+    OnTheAirTVService,
+    FooterBannerService,
+    AuthenticationService,
+    LoginCheckService,
+    AccountService,
+    GetMovieDetailService,
+    GetMovieCreditsService,
+    MovieReviewService,
+    SimilarMovieService,
+    ExternalIdService
   ]
 })
 export class AppModule {}

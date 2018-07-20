@@ -44,14 +44,15 @@
   @include clearfix();
 }
 
-.pull-left {
-  float: left;
-}
+ion-content {
+  &.has-header {
+    margin-top: 43px;
 
-.pull-right {
-  float: right;
+    &.content-md {
+      margin-top: 55px;
+    }
+  }
 }
-
 
 .menu-inner {
   .list {
