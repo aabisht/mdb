@@ -46,12 +46,22 @@
 
 ion-content {
   &.has-header {
-    margin-top: 43px;
+    .fixed-content,
+    .scroll-content {
+      margin-top: 43px;
+    }
 
     &.content-md {
-      margin-top: 55px;
+      .fixed-content,
+      .scroll-content {
+        margin-top: 55px;
+      }
     }
   }
+}
+
+.ios .ion-page.show-page ~ .nav-decor {
+  background: #ffffff;
 }
 
 .menu-inner {

@@ -1,3 +1,5 @@
+import { HomeTVShowTabsPage } from './../pages/home/homeTVShowTabsPage/homeTVShowTabsPage';
+import { HomeMovieTabPage } from './../pages/home/homeMovieTabPage/homeMovieTabPage';
 import { ExternalIdService } from './../services/movies/external-ids/external-ids.service';
 import { SimilarMovieService } from './../services/movies/similar-movies/similar-movies.service';
 import { MovieReviewService } from './../services/movies/moview-review/movie-review.service';
@@ -29,7 +31,9 @@ import { LoginPage } from '../pages/login/login';
     MdbHeaderComponent,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    HomeMovieTabPage,
+    HomeTVShowTabsPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { LoginPage } from '../pages/login/login';
     MdbHeaderComponent,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    HomeMovieTabPage,
+    HomeTVShowTabsPage
   ],
   providers: [
     StatusBar,
