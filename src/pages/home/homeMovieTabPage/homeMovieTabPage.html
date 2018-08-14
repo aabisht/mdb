@@ -3,5 +3,17 @@
     <ion-card class="movie-item mdb-card" *ngFor="let movie of topMovies">
       <mdb-media-card [mediaData]="movie" [mediaType]="'movies'"></mdb-media-card>
     </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <button ion-button outline (click)="loadMoreNowPlayingMovies()">
+              <span *ngIf=(!loadMoreFlag)>Load More</span>
+              <ion-spinner *ngIf=(loadMoreFlag)></ion-spinner>
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

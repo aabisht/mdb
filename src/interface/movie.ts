@@ -3,7 +3,7 @@ export interface IMovie {
   total_results: number;
   total_pages: number;
   results: {
-    [key: number]: IMovieResult
+    IMovieResult
   };
   dates: {
     maximum: string,

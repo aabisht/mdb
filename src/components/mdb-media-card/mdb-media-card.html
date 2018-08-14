@@ -1,11 +1,15 @@
 <div class="mdb-card-backdrop-img-wrapper">
-    <img src="" alt=""
+  <img src="./assets/imgs/img-not-available-banner.jpg" alt=""
       [src]="mediaData.backdrop_path" [alt]="mediaData.title" />
+  <div class="mdb-vote-average-wrapper">
+    <ion-icon name="heart"></ion-icon>
+    <span>{{ mediaData.vote_average }}</span>
+  </div>
 </div>
 <div class="mdb-card-content-wrapper" padding>
   <div class="mdb-card-media-title-wrapper clearfix">
     <div class="mdb-card-poster-img-wrapper">
-      <img src="" alt=""
+      <img src="./assets/imgs/img-not-available-poster.jpg" alt=""
         [src]="mediaData.poster_path" [alt]="mediaData.title" />
     </div>
     <div class="mdb-card-title-wrapper">

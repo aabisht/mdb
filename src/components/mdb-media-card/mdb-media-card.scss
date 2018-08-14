@@ -1,3 +1,48 @@
+.mdb-card-backdrop-img-wrapper {
+  position: relative;
+
+  .mdb-vote-average-wrapper {
+    position: absolute;
+    right: 16px;
+    top: 0;
+    background-color: $vote-count-bg-color;
+    color: $vote-count-text-color;
+    width: 37px;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 20px;
+
+    > ion-icon, > span {
+      display: block;
+    }
+
+    ion-icon[name="heart"] {
+      color: $heart-color;
+      font-size: 20px;
+    }
+
+    &:before, &:after {
+      content: '';
+      border: 25px solid transparent;
+      border-top: none;
+      border-bottom-color: $vote-count-bg-color;
+      position: absolute;
+      bottom: -9px;
+      z-index: 0;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+      left: 3px;
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+      right: 3px;
+    }
+
+  }
+}
 .mdb-card-content-wrapper {
   .mdb-card-poster-img-wrapper {
     float: left;

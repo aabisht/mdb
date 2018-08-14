@@ -57,6 +57,11 @@ $tag-text-color: color($colors, white);
 $ion-content-bg-color: color($colors, light);
 $ion-content-text-color: color($colors, secondary);
 
+$vote-count-bg-color: color($colors, primary);
+$vote-count-text-color: color($colors, white);
+
+$heart-color: #D20101;
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
