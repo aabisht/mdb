@@ -40,25 +40,45 @@
   }
 }
 
+@mixin truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .clearfix {
   @include clearfix();
 }
 
+.truncate {
+  @include truncate();
+}
+
 ion-content {
   &.has-header {
-    .fixed-content,
-    .scroll-content {
+    > .fixed-content,
+    > .scroll-content {
       margin-top: 43px;
     }
 
     &.content-md {
-      .fixed-content,
-      .scroll-content {
+      > .fixed-content,
+      > .scroll-content {
         margin-top: 55px;
       }
     }
   }
 }
+
+.mdb-card {
+  &.card-ios,
+  &.card-md {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 
 .ios .ion-page.show-page ~ .nav-decor {
   background: #ffffff;
@@ -117,4 +137,11 @@ ion-content {
       }
     }
   }
+}
+
+
+.content-md,
+.content-ios {
+  background: $ion-content-bg-color;
+  color: $ion-content-text-color;
 }

@@ -22,6 +22,7 @@ export interface IMovieResult {
   original_language: string;
   original_title: string;
   genre_ids: number[];
+  genre_name: string[];
   backdrop_path: string;
   adult: boolean;
   overview: string;

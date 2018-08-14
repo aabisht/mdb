@@ -38,7 +38,8 @@ $colors: (
   secondary:  #081C24,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  white:      #ffffff
 );
 
 $toolbar-background: color($colors, secondary);
@@ -49,6 +50,12 @@ $sidebar-menu-active-color: color($colors, primary);
 
 $input-border-color: lighten(color($colors, dark), 50%);
 $input-border-active-color: color($colors, primary);
+
+$tag-bg-color: color($colors, primary);
+$tag-text-color: color($colors, white);
+
+$ion-content-bg-color: color($colors, light);
+$ion-content-text-color: color($colors, secondary);
 
 // App iOS Variables
 // --------------------------------------------------

@@ -14,6 +14,7 @@ import { NowPlayingMovieService } from './../services/movies/now-playing/now-pla
 import { DiscoverMovieService } from './../services/discover/discover-movie.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -24,6 +25,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MdbHeaderComponent } from '../components/mdb-header/mdb-header';
 import { LoginPage } from '../pages/login/login';
+import { MdbMediaCardComponent } from '../components/mdb-media-card/mdb-media-card';
+import { MovieGenresListService } from '../services/Genres/movie-genres-list.service';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,12 @@ import { LoginPage } from '../pages/login/login';
     ListPage,
     LoginPage,
     HomeMovieTabPage,
-    HomeTVShowTabsPage
+    HomeTVShowTabsPage,
+    MdbMediaCardComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -47,7 +52,8 @@ import { LoginPage } from '../pages/login/login';
     ListPage,
     LoginPage,
     HomeMovieTabPage,
-    HomeTVShowTabsPage
+    HomeTVShowTabsPage,
+    MdbMediaCardComponent
   ],
   providers: [
     StatusBar,
@@ -64,7 +70,8 @@ import { LoginPage } from '../pages/login/login';
     GetMovieCreditsService,
     MovieReviewService,
     SimilarMovieService,
-    ExternalIdService
+    ExternalIdService,
+    MovieGenresListService
   ]
 })
 export class AppModule {}

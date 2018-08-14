@@ -1,0 +1,24 @@
+<div class="mdb-card-backdrop-img-wrapper">
+    <img src="" alt=""
+      [src]="mediaData.backdrop_path" [alt]="mediaData.title" />
+</div>
+<div class="mdb-card-content-wrapper" padding>
+  <div class="mdb-card-media-title-wrapper clearfix">
+    <div class="mdb-card-poster-img-wrapper">
+      <img src="" alt=""
+        [src]="mediaData.poster_path" [alt]="mediaData.title" />
+    </div>
+    <div class="mdb-card-title-wrapper">
+        <h3 class="title">{{ mediaData.title }}</h3>
+        <!-- <ion-icon [name]="(mediaType == 'movies') ? 'film' : 'desktop outline' "></ion-icon> -->
+    </div>
+  </div>
+  <div class="mdb-card-caption-wrapper">
+    <p>{{ mediaData.overview }}</p>
+    <ul class="media-tags-wrapper" *ngIf="mediaData.genre_ids">
+      <li class="media-tags" *ngFor="let tags of mediaData.genre_name">
+        <a href="javascript:;"><ion-icon name="pricetag"></ion-icon> {{tags}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
