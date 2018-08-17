@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 
 import * as $ from "jquery";
 import { LoginPage } from '../pages/login/login';
+import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,8 @@ export class MyApp implements OnInit {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              public modalCtrl: ModalController, private _movieGenresList: MovieGenresListService) {
+              public modalCtrl: ModalController, private _movieGenresList: MovieGenresListService,
+              private _tvShowGenresList: TVShowGenresListService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -33,10 +35,17 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit(){
-    this._movieGenresList.getMovieHenresList()
+    this._movieGenresList.getMovieGenresList()
       .subscribe(
         data => {
           localStorage.setItem('movie-genres', JSON.stringify(data))
+        },
+        error => console.log('Error :: ' + error)
+    );
+    this._tvShowGenresList.getTVShowGenresList()
+      .subscribe(
+        data => {
+          localStorage.setItem('tv-genres', JSON.stringify(data))
         },
         error => console.log('Error :: ' + error)
     );

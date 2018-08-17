@@ -7,16 +7,16 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class MovieGenresListService {
-  private _getMovieHenresListUrl: string;
+  private _getMovieGenresListUrl: string;
 
   constructor(private _http: Http) { }
 
-  getMovieHenresList(): Observable<IGenres> {
-    this._getMovieHenresListUrl = Constants.API_URL + 'genre/movie/list?api_key=' + Constants.API_Key_v3 +
+  getMovieGenresList(): Observable<IGenres> {
+    this._getMovieGenresListUrl = Constants.API_URL + 'genre/movie/list?api_key=' + Constants.API_Key_v3 +
       '&language=' + Constants.Default_Language;
 
       return this._http
-                 .get(this._getMovieHenresListUrl)
+                 .get(this._getMovieGenresListUrl)
                  .map((response: Response) => {
                   return <IGenres>response.json();
                  })

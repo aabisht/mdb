@@ -10,6 +10,7 @@ export interface ITv {
 export interface ITVResult {
   original_name: string;
   genre_ids: number[];
+  genre_name: string[];
   name: string;
   popularity: number;
   origin_country: string[];

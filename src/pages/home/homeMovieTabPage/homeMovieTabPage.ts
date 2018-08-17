@@ -34,7 +34,7 @@ export class HomeMovieTabPage implements OnInit {
       .subscribe(
         data => {
           topMoviesData = this.filterMovieData(data);
-          this.pupulateMovieData(topMoviesData);
+          this.populateMovieData(topMoviesData);
           this.pageNumber = ++this.pageNumber;
           this.loadMoreFlag = false;
         },
@@ -62,7 +62,7 @@ export class HomeMovieTabPage implements OnInit {
     }, time);
   }
 
-  pupulateMovieData(topMoviesData: IMovieResult[]): void {
+  populateMovieData(topMoviesData: IMovieResult[]): void {
     if( this.topMovies.length > 0 ) {
       topMoviesData.forEach(movieData => {
         this.topMovies.push(movieData);

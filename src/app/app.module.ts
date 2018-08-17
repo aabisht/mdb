@@ -27,6 +27,7 @@ import { MdbHeaderComponent } from '../components/mdb-header/mdb-header';
 import { LoginPage } from '../pages/login/login';
 import { MdbMediaCardComponent } from '../components/mdb-media-card/mdb-media-card';
 import { MovieGenresListService } from '../services/Genres/movie-genres-list.service';
+import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MovieGenresListService } from '../services/Genres/movie-genres-list.ser
     MovieReviewService,
     SimilarMovieService,
     ExternalIdService,
-    MovieGenresListService
+    MovieGenresListService,
+    TVShowGenresListService
   ]
 })
 export class AppModule {}
