@@ -7,12 +7,13 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class OnTheAirTVService {
-  private _onTheAirTVUrl = Constants.API_URL + 'tv/on_the_air?api_key=' +
-                              Constants.API_Key_v3 + '&language' + Constants.Default_Language;
+  private _onTheAirTVUrl: string;
 
   constructor(private _http: Http) { }
 
   getOnTheAirTV(pageNumber?: number): Observable<ITVResult[]> {
+    this._onTheAirTVUrl = Constants.API_URL + 'tv/on_the_air?api_key=' +
+                          Constants.API_Key_v3 + '&language' + Constants.Default_Language;
     if (pageNumber) {
       this._onTheAirTVUrl = this._onTheAirTVUrl + '&page=' + pageNumber;
     }

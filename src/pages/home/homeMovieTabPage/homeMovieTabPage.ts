@@ -47,8 +47,8 @@ export class HomeMovieTabPage implements OnInit {
 
   getMovieGenre(movie: IMovieResult): void {
     movie.genre_name = [];
-    var time: number = 100;
-    setTimeout(function() {
+    let delay = 100, max_delay_time= 12800;
+    let timerId = setTimeout(function request() {
       if(localStorage.getItem('movie-genres')) {
         movie.genre_ids.forEach(function(genreID ) {
           JSON.parse(localStorage.getItem('movie-genres')).genres.forEach(function(genreIDS) {
@@ -57,9 +57,15 @@ export class HomeMovieTabPage implements OnInit {
             }
           });
         });
+        clearTimeout(timerId);
+      } else {
+        if(delay < max_delay_time) {
+          delay  *= 2;
+        }
+        clearTimeout(timerId);
+        timerId = setTimeout(request, delay);
       }
-      time = time * 2;
-    }, time);
+    }, delay);
   }
 
   populateMovieData(topMoviesData: IMovieResult[]): void {

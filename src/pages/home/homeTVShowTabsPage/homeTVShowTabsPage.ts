@@ -98,4 +98,9 @@ export class HomeTVShowTabsPage implements OnInit {
     this.loadMoreFlag = false;
   }
 
+  loadMoreOnAirTVShows(): void {
+    this.loadMoreFlag = true;
+    this.getOnAirTVShows(this.pageNumber);
+  }
+
 }

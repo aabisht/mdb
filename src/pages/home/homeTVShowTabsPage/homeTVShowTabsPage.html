@@ -1,5 +1,19 @@
 <ion-content padding class="card-background-page">
-  <ion-card class="movie-item mdb-card" *ngFor="let tvSHow of topTVShows">
-    <mdb-media-card [mediaData]="tvSHow" [mediaType]="'tv-show'"></mdb-media-card>
-  </ion-card>
+  <div class="movie-items" *ngIf="topTVShows.length > 0">
+    <ion-card class="movie-item mdb-card" *ngFor="let tvSHow of topTVShows">
+      <mdb-media-card [mediaData]="tvSHow" [mediaType]="'tv-show'"></mdb-media-card>
+    </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <button ion-button outline (click)="loadMoreOnAirTVShows()">
+              <span *ngIf=(!loadMoreFlag)>Load More</span>
+              <ion-spinner *ngIf=(loadMoreFlag)></ion-spinner>
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
