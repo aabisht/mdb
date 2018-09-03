@@ -15,7 +15,7 @@
       <!-- <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button> -->
-      <button menuClose ion-item detail-none (click)="openModal()">
+      <button menuClose ion-item detail-none (click)="openModal()" *ngIf="!isLogin">
         <ion-icon name="contact"></ion-icon> Login / SignUp
       </button>
       <button ion-item detail-none (click)="toggleDropdown('discover', $event)">

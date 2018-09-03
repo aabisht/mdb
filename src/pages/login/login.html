@@ -1,55 +1,41 @@
-<!-- <ion-header>
-  <ion-navbar>
-
-  <ion-buttons start>
-    <button ion-button (click)="dismiss()">
-      <span ion-text color="primary" showWhen="ios">Cancel</span>
-      <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
-    </button>
-  </ion-buttons>
-    <ion-title>Modals</ion-title>
-  </ion-navbar>
-</ion-header> -->
-
 <ion-content class="login-wrapper">
-
   <div class="vh-center-container-wrapper">
-    <!-- <div class="login-container">
-        <div class="header-logo-wrapper">
-          <i class="mdb-icon-logo"></i>
-          <h1><strong>Sign in</strong></h1>
-        </div>
-    </div> -->
     <ion-card class="login-container">
-
         <ion-card-header>
           <ion-icon name="md-close" (click)="dismiss()"></ion-icon>
           <i class="mdb-icon-logo"></i>
           <h1><strong>Sign in</strong></h1>
         </ion-card-header>
-
         <ion-card-content>
-          <ion-list>
-
-            <ion-item>
-              <ion-label floating>Username</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input type="password"></ion-input>
-            </ion-item>
-
-          </ion-list>
-
-          <div padding class="clearfix">
-            <button ion-button clear float-left class="clear-btn">Create Account</button>
-            <button ion-button float-right>Login</button>
-          </div>
+          <form novalidate  *ngIf="!isLogin" [formGroup]="loginForm">
+            <ion-list>
+              <ion-item [ngClass]="{'has-error': this.loginForm.controls['username'].invalid &&
+                        (this.loginForm.controls['username'].touched && this.loginForm.controls['username'].dirty)}">
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+                <p>{{ loginForm.get('username').touched }}</p>
+              </ion-item>
+              <div *ngIf="this.loginForm.controls['username'].invalid &&
+                    (this.loginForm.controls['username'].touched && this.loginForm.controls['username'].dirty)" class="validation-error">
+                Username Field cannot be empty
+              </div>
+              <ion-item [ngClass]="{'has-error': this.loginForm.controls['password'].invalid &&
+                        (this.loginForm.controls['password'].touched && this.loginForm.controls['password'].dirty)}">
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+              <div *ngIf="this.loginForm.controls['password'].invalid &&
+                    (this.loginForm.controls['password'].touched && this.loginForm.controls['password'].dirty)" class="validation-error">
+                Password Field cannot be empty
+              </div>
+            </ion-list>
+            <div padding class="clearfix">
+              <button ion-button clear float-left class="clear-btn">Create Account</button>
+              <button type="submit" ion-button float-right (click)="onLogin()">Login</button>
+            </div>
+          </form>
+          <h2 *ngIf="isLogin"><strong>Already Logged In</strong></h2>
         </ion-card-content>
-
       </ion-card>
   </div>
-
 </ion-content>

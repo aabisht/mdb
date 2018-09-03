@@ -1,6 +1,6 @@
 import { MovieGenresListService } from './../services/Genres/movie-genres-list.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Nav, Platform, ModalController } from 'ionic-angular';
+import { Nav, Platform, ModalController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import * as $ from "jquery";
 import { LoginPage } from '../pages/login/login';
 import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.service';
+import { LoginCheckService } from '../services/login-check/login-check.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,12 +19,16 @@ export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  isLogin: boolean;
 
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-              public modalCtrl: ModalController, private _movieGenresList: MovieGenresListService,
-              private _tvShowGenresList: TVShowGenresListService) {
+              public _modalCtrl: ModalController,
+              private _movieGenresList: MovieGenresListService,
+              private _tvShowGenresList: TVShowGenresListService,
+              private _loginCheckService: LoginCheckService,
+              private _events: Events) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -49,6 +54,8 @@ export class MyApp implements OnInit {
         },
         error => console.log('Error :: ' + error)
     );
+
+    this.checkLogin();
   }
 
   initializeApp() {
@@ -58,6 +65,18 @@ export class MyApp implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+    });
+  }
+
+  checkLogin() {
+    if(sessionStorage.getItem('sessionID')) {
+      this._loginCheckService.checkLogin(true);
+    }
+    this._loginCheckService.currentHsLogin.subscribe(isLogin => this.isLogin = isLogin);
+
+    // Check for logged in case
+    this._events.subscribe('user:login', () => {
+      this.isLogin = true;
     });
   }
 
@@ -75,7 +94,9 @@ export class MyApp implements OnInit {
   }
 
   openModal() {
-    let modal = this.modalCtrl.create(LoginPage);
-    modal.present();
+    if( !this.isLogin ) {
+      let modal = this._modalCtrl.create(LoginPage);
+      modal.present();
+    }
   }
 }

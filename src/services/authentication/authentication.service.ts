@@ -7,8 +7,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class AuthenticationService {
-
-  private _getRequestTokenUrl = Constants.API_URL + 'authentication/token/new?api_key=' + Constants.API_Key_v3;
+  private _getRequestTokenUrl: string;
   private _validateWithLoginUrl: string;
   private _getSessionIDUrl: string;
 
@@ -16,6 +15,7 @@ export class AuthenticationService {
 
   // Get Request Token
   getRequestToken(): Observable<IRequestToken> {
+    this._getRequestTokenUrl = Constants.API_URL + 'authentication/token/new?api_key=' + Constants.API_Key_v3;
     return this._http
             .get(this._getRequestTokenUrl)
             .map((response: Response) => {
@@ -27,10 +27,15 @@ export class AuthenticationService {
   // Create Session With Login
   validateWithLogin(username: string, password: string, request_token: string): Observable<IValidateWithLogin> {
     if (username && password && request_token) {
-      // tslint:disable-next-line:max-line-length
-      this._validateWithLoginUrl = Constants.API_URL + 'authentication/token/validate_with_login?api_key=' + Constants.API_Key_v3 + '&username=' + username + '&password=' + password + '&request_token=' + request_token;
+      this._validateWithLoginUrl = Constants.API_URL + 'authentication/token/validate_with_login?api_key=' + Constants.API_Key_v3;
+      let validate_with_login_header = {
+        username: username,
+        password: password,
+        request_token: request_token
+      }
+
       return this._http
-              .get(this._validateWithLoginUrl)
+              .post(this._validateWithLoginUrl, validate_with_login_header)
               .map((response: Response) => {
                 return <IValidateWithLogin>response.json();
               })
@@ -41,10 +46,14 @@ export class AuthenticationService {
   // Create Session
   getSessionID(request_token: string): Observable<ISession> {
     if (request_token) {
-      // tslint:disable-next-line:max-line-length
-      this._getSessionIDUrl = Constants.API_URL + 'authentication/session/new?api_key=' + Constants.API_Key_v3 + '&request_token=' + request_token;
+      this._getSessionIDUrl = Constants.API_URL + 'authentication/session/new?api_key=' + Constants.API_Key_v3;
+
+      let request_token_header = {
+        request_token: request_token
+      }
+
       return this._http
-              .get(this._getSessionIDUrl)
+              .post(this._getSessionIDUrl, request_token_header)
               .map((response: Response) => {
                 return <ISession>response.json();
               })
@@ -53,6 +62,6 @@ export class AuthenticationService {
   }
 
   private handleError(error: Response) {
-    return Observable.throw(error.statusText);
+    return Observable.throw(error);
   }
 }

@@ -50,6 +50,8 @@ $sidebar-menu-active-color: color($colors, primary);
 
 $input-border-color: lighten(color($colors, dark), 50%);
 $input-border-active-color: color($colors, primary);
+$input-error-border-color: color($colors, danger);
+$input-error-text-color: color($colors, danger);
 
 $tag-bg-color: color($colors, primary);
 $tag-text-color: color($colors, white);
