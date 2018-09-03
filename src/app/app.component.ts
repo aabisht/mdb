@@ -11,6 +11,7 @@ import * as $ from "jquery";
 import { LoginPage } from '../pages/login/login';
 import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.service';
 import { LoginCheckService } from '../services/login-check/login-check.service';
+import { IAccountDetail } from '../interface/account-detail';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,6 +21,7 @@ export class MyApp implements OnInit {
 
   rootPage: any = HomePage;
   isLogin: boolean;
+  userData: IAccountDetail;
 
   pages: Array<{title: string, component: any}>;
 
@@ -78,6 +80,10 @@ export class MyApp implements OnInit {
     this._events.subscribe('user:login', () => {
       this.isLogin = true;
     });
+
+    if(this.isLogin && sessionStorage.getItem('accountDetail')) {
+      this.userData = JSON.parse(sessionStorage.getItem('accountDetail'));
+    }
   }
 
   openPage(page) {
