@@ -1,6 +1,6 @@
 import { HomeTVShowTabsPage } from './homeTVShowTabsPage/homeTVShowTabsPage';
 import { HomeMovieTabPage } from './homeMovieTabPage/homeMovieTabPage';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginCheckService } from '../../services/login-check/login-check.service';
 

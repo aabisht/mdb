@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   loginForm : FormGroup;
   isLogin: boolean;
   userData = {'username': '', 'password': ''};
+  bannerImage: string;
 
   constructor(public _viewCtrl: ViewController,
               private _formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class LoginPage implements OnInit {
 
   public ngOnInit() {
 
+    this.getBannerImage();
 
     if(sessionStorage.getItem('sessionID')) {
       this._loginCheckService.checkLogin(true);
@@ -37,6 +39,7 @@ export class LoginPage implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
+
   }
 
   dismiss() {
@@ -117,6 +120,12 @@ export class LoginPage implements OnInit {
           this.toastMessage(errorMSG.status_message);
         }
       )
+  }
+
+  getBannerImage() {
+    if(localStorage.getItem('poster-path')) {
+      this.bannerImage = localStorage.getItem('poster-path');
+    }
   }
 
 }

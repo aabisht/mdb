@@ -14,6 +14,7 @@ export class HomeMovieTabPage implements OnInit {
   topMovies: IMovieResult[] = [];
   loadMoreFlag: boolean = false;
   pageNumber: number = 1;
+  randomIndex: number;
 
   constructor(public navCtrl: NavController,
               private _nowPlayingMovieService: NowPlayingMovieService) {}
@@ -96,7 +97,17 @@ export class HomeMovieTabPage implements OnInit {
       this.getMovieGenre(movie);
       topMoviesData.push(movie);
     });
+    this.setPosterImage(topMoviesData);
     return topMoviesData;
+  }
+
+  setPosterImage(data: IMovieResult[]) {
+    this.randomIndex = Math.floor((Math.random() * data.length) + 1);
+    if(data[this.randomIndex].poster_path != null) {
+      localStorage.setItem('poster-path', data[this.randomIndex].poster_path);
+    } else {
+      this.setPosterImage(data);
+    }
   }
 
   loadMoreNowPlayingMovies():void {
