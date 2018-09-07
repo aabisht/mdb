@@ -1,7 +1,7 @@
 <ion-content padding class="card-background-page">
   <div class="movie-items" *ngIf="topTVShows.length > 0">
     <ion-card class="movie-item mdb-card" *ngFor="let tvSHow of topTVShows">
-      <mdb-media-card [mediaData]="tvSHow" [mediaType]="'tv-show'"></mdb-media-card>
+      <mdb-media-card [mediaData]="tvSHow" [mediaType]="'tv-show'" [isLogin]="isLogin"></mdb-media-card>
     </ion-card>
     <ion-grid>
       <ion-row>

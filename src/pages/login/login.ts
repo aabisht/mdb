@@ -27,13 +27,13 @@ export class LoginPage implements OnInit {
 
   public ngOnInit() {
 
-    this.getBannerImage();
-
     if(sessionStorage.getItem('sessionID')) {
       this._loginCheckService.checkLogin(true);
       this._loginCheckService.currentHsLogin.subscribe(isLogin => this.isLogin = isLogin);
       this.dismiss();
     }
+
+    this.getBannerImage();
 
     this.loginForm = this._formBuilder.group({
       username: new FormControl('', Validators.required),

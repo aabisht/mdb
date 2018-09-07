@@ -8,6 +8,7 @@ import { HomePosterMedia } from '../../interface/home-poster-media';
 export class MdbMediaCardComponent {
   @Input() mediaData: HomePosterMedia;
   @Input() mediaType: string;
+  @Input() isLogin: boolean;
 
   constructor() {}
 

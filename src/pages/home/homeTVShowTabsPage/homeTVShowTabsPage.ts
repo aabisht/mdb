@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { OnTheAirTVService } from '../../../services/tv/on-the-air.service';
 import { ITVResult } from '../../../interface/tv';
 import { Constants } from '../../../app/app.constants';
+import { LoginCheckService } from '../../../services/login-check/login-check.service';
 
 @Component({
   selector: 'home-tv-show-tab',
@@ -13,12 +14,16 @@ export class HomeTVShowTabsPage implements OnInit {
   topTVShows: ITVResult[] = [];
   loadMoreFlag: boolean = false;
   pageNumber: number = 1;
+  isLogin: boolean;
 
   constructor(public navCtrl: NavController,
-              private _onTheAirTVService: OnTheAirTVService) {}
+              private _onTheAirTVService: OnTheAirTVService,
+              private _loginCheckService: LoginCheckService,
+              private _events: Events) {}
 
   ngOnInit(){
     this.getOnAirTVShows(this.pageNumber);
+    this.checkLogin();
   }
 
   getOnAirTVShows(pageNumber?: number): void {
@@ -101,6 +106,24 @@ export class HomeTVShowTabsPage implements OnInit {
   loadMoreOnAirTVShows(): void {
     this.loadMoreFlag = true;
     this.getOnAirTVShows(this.pageNumber);
+  }
+
+  checkLogin(): void {
+    if(sessionStorage.getItem('sessionID')) {
+      this._loginCheckService.checkLogin(true);
+    }
+    this._loginCheckService.currentHsLogin.subscribe(isLogin => this.isLogin = isLogin);
+
+    // Check for logged in case
+    this._events.subscribe('user:login', () => {
+      this.isLogin = this.checkforLoginData();
+    });
+
+    this.isLogin = this.checkforLoginData();
+  }
+
+  checkforLoginData(): boolean {
+    return (sessionStorage.getItem('accountDetail')) ? true : false;
   }
 
 }

@@ -24,5 +24,14 @@
         <a href="javascript:;"><ion-icon name="pricetag"></ion-icon> {{tags}}</a>
       </li>
     </ul>
+
+    <ion-row *ngIf="isLogin" class="card-footer-btn-wrapper">
+      <ion-col text-center>
+        <button ion-button icon-center clear small>
+            <ion-icon name="heart"></ion-icon>
+            <div>Add to Watchlist</div>
+        </button>
+      </ion-col>
+    </ion-row>
   </div>
 </div>

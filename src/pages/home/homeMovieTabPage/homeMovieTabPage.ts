@@ -2,7 +2,8 @@ import { Constants } from './../../../app/app.constants';
 import { IMovieResult } from './../../../interface/movie';
 import { NowPlayingMovieService } from './../../../services/movies/now-playing/now-playing.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
+import { LoginCheckService } from '../../../services/login-check/login-check.service';
 
 @Component({
   selector: 'home-movie-tab',
@@ -15,13 +16,17 @@ export class HomeMovieTabPage implements OnInit {
   loadMoreFlag: boolean = false;
   pageNumber: number = 1;
   randomIndex: number;
+  isLogin: boolean;
 
   constructor(public navCtrl: NavController,
-              private _nowPlayingMovieService: NowPlayingMovieService) {}
+              private _nowPlayingMovieService: NowPlayingMovieService,
+              private _loginCheckService: LoginCheckService,
+              private _events: Events) {}
 
 
   ngOnInit(){
     this.getNowPlayingMovies(this.pageNumber);
+    this.checkLogin();
   }
 
   getNowPlayingMovies(pageNumber?: number): void {
@@ -113,6 +118,24 @@ export class HomeMovieTabPage implements OnInit {
   loadMoreNowPlayingMovies():void {
     this.loadMoreFlag = true;
     this.getNowPlayingMovies(this.pageNumber);
+  }
+
+  checkLogin(): void {
+    if(sessionStorage.getItem('sessionID')) {
+      this._loginCheckService.checkLogin(true);
+    }
+    this._loginCheckService.currentHsLogin.subscribe(isLogin => this.isLogin = isLogin);
+
+    // Check for logged in case
+    this._events.subscribe('user:login', () => {
+      this.isLogin = this.checkforLoginData();
+    });
+
+    this.isLogin = this.checkforLoginData();
+  }
+
+  checkforLoginData(): boolean {
+    return (sessionStorage.getItem('accountDetail')) ? true : false;
   }
 
 }

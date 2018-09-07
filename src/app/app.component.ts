@@ -70,7 +70,7 @@ export class MyApp implements OnInit {
     });
   }
 
-  checkLogin() {
+  checkLogin(): void {
     if(sessionStorage.getItem('sessionID')) {
       this._loginCheckService.checkLogin(true);
     }
@@ -79,8 +79,13 @@ export class MyApp implements OnInit {
     // Check for logged in case
     this._events.subscribe('user:login', () => {
       this.isLogin = true;
+      this.checkforLoginData();
     });
 
+    this.checkforLoginData();
+  }
+
+  checkforLoginData(): void {
     if(this.isLogin && sessionStorage.getItem('accountDetail')) {
       this.userData = JSON.parse(sessionStorage.getItem('accountDetail'));
     }
