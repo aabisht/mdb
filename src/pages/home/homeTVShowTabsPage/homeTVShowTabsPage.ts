@@ -119,6 +119,10 @@ export class HomeTVShowTabsPage implements OnInit {
       this.isLogin = this.checkforLoginData();
     });
 
+    this._events.subscribe('user:logout', () => {
+      this.isLogin = this.checkforLoginData();
+    });
+
     this.isLogin = this.checkforLoginData();
   }
 

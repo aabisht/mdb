@@ -82,6 +82,11 @@ export class MyApp implements OnInit {
       this.checkforLoginData();
     });
 
+    this._events.subscribe('user:logout', () => {
+      this.isLogin = false;
+      this.checkforLoginData();
+    });
+
     this.checkforLoginData();
   }
 
@@ -109,5 +114,12 @@ export class MyApp implements OnInit {
       let modal = this._modalCtrl.create(LoginPage);
       modal.present();
     }
+  }
+
+  logout() {
+    sessionStorage.removeItem('accountDetail');
+    sessionStorage.removeItem('avatar');
+    sessionStorage.removeItem('sessionID');
+    this._events.publish('user:logout');
   }
 }
