@@ -49,7 +49,7 @@ import { LoginModule } from '../pages/login/login.module';
     SimilarMovieService,
     ExternalIdService,
     MovieGenresListService,
-    TVShowGenresListService
+    TVShowGenresListService,
   ]
 })
 export class AppModule {}

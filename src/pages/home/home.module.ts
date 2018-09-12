@@ -1,3 +1,4 @@
+import { AddToWatchlistService } from './../../services/account/add-to-watchlist/add-to-watchlist.service';
 import { NgModule } from '@angular/core';
 import { HomePage } from './home';
 import { HomeTVShowTabsPage } from './homeTVShowTabsPage/homeTVShowTabsPage';
@@ -28,7 +29,8 @@ import { MdbMediaCardComponent } from '../../components/mdb-media-card/mdb-media
   ],
   providers: [
     NowPlayingMovieService,
-    OnTheAirTVService
+    OnTheAirTVService,
+    AddToWatchlistService
   ]
 })
 export class HomeModule {}

@@ -27,7 +27,7 @@
 
     <ion-row *ngIf="isLogin" class="card-footer-btn-wrapper">
       <ion-col text-center>
-        <button ion-button icon-center clear small>
+        <button ion-button icon-center clear small (click)="addToWatchList(mediaType, mediaData.id, true)">
             <ion-icon name="heart"></ion-icon>
             <div>Add to Watchlist</div>
         </button>
