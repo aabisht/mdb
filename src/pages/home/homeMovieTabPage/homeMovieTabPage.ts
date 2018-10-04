@@ -108,7 +108,7 @@ export class HomeMovieTabPage implements OnInit {
 
   setPosterImage(data: IMovieResult[]) {
     this.randomIndex = Math.floor((Math.random() * data.length) + 1);
-    if(data[this.randomIndex].poster_path != null) {
+    if(data[this.randomIndex].poster_path != null && typeof data[this.randomIndex].poster_path != undefined) {
       localStorage.setItem('poster-path', data[this.randomIndex].poster_path);
     } else {
       this.setPosterImage(data);

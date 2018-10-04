@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { HomePosterMedia } from '../../interface/home-poster-media';
 import { ToastController } from 'ionic-angular';
 import { IAccountDetail } from '../../interface/account-detail';
+import { MarkAsFavoriteService } from '../../services/account/mark-as-favorite/mark-as-favorite.service';
 
 @Component({
   selector: 'mdb-media-card',
@@ -14,7 +15,8 @@ export class MdbMediaCardComponent {
   @Input() isLogin: boolean;
 
   constructor(private _addToWatchlist: AddToWatchlistService,
-              private _toastCtrl: ToastController) {}
+              private _toastCtrl: ToastController,
+              private _markAsFavoriteService: MarkAsFavoriteService) {}
 
   ngOnChanges(): void {
     if (!this.mediaData.title || !this.mediaData.original_title) {
@@ -38,10 +40,24 @@ export class MdbMediaCardComponent {
           this.toastMessage(data.status_message);
         },
         error => {
-          let errorMSG = JSON.parse(error._body);
-          this.toastMessage(errorMSG.status_message);
+          console.log(error);
+          // let errorMSG = JSON.parse(error._body);
+          // this.toastMessage(errorMSG.status_message);
         }
       )
+
+    this._markAsFavoriteService.markFavorite(account_id, session_id, media_type, media_id, watchlist)
+    .subscribe(
+      data => {
+        debugger;
+        this.toastMessage(data.status_message);
+      },
+      error => {
+        console.log(error);
+        // let errorMSG = JSON.parse(error._body);
+        // this.toastMessage(errorMSG.status_message);
+      }
+    )
 
   }
 

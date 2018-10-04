@@ -8,6 +8,7 @@ import { OnTheAirTVService } from '../../services/tv/on-the-air.service';
 import { MdbHeaderComponent } from '../../components/mdb-header/mdb-header';
 import { IonicPageModule } from 'ionic-angular';
 import { MdbMediaCardComponent } from '../../components/mdb-media-card/mdb-media-card';
+import { MarkAsFavoriteService } from '../../services/account/mark-as-favorite/mark-as-favorite.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MdbMediaCardComponent } from '../../components/mdb-media-card/mdb-media
   providers: [
     NowPlayingMovieService,
     OnTheAirTVService,
-    AddToWatchlistService
+    AddToWatchlistService,
+    MarkAsFavoriteService
   ]
 })
 export class HomeModule {}
