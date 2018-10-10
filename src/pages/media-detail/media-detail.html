@@ -1,0 +1,90 @@
+<ion-content class="media-detail">
+  <div class="media-detail-header">
+    <button class="back-btn" (click)="dismiss()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </button>
+
+    <div class="header-banner-wrapper">
+      <div class="video-wrapper" [innerHTML]="media_traler_iframe" *ngIf="media_traler_iframe"></div>
+      <div class="img-wrapper" *ngIf="!media_traler_iframe && mediaData">
+        <img [src]="mediaData.backdrop_path" [alt]="mediaData.title">
+      </div>
+    </div>
+
+    <div class="header-poster-data" *ngIf="mediaData" text-center>
+      <div class="img-wrapper">
+        <img [src]="mediaData.poster_path" [alt]="mediaData.title">
+      </div>
+      <div class="caption-wrapper">
+        <h3 class="truncate">{{ mediaData.title }}</h3>
+        <h6><ion-icon name="film" *ngIf="mediaType == 'movies'"></ion-icon> {{ mediaType }}</h6>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="media-detail-body">
+    <ion-card *ngIf="mediaData">
+      <ion-card-content class="media-detail-wrapper">
+        <h3>{{ mediaData.title }}</h3>
+        <h5 *ngIf="mediaData.tagline">{{ mediaData.tagline }}</h5>
+        <p>{{ mediaData.overview }}</p>
+        <div class="media-meta">
+          <p>Runtime: <strong>{{ mediaData.runtime_string }}</strong></p>
+          <P class="vote-average"><ion-icon name="heart"></ion-icon> <strong>{{ mediaData.vote_average }}</strong></P>
+          <p><a [href]="watch_media_iframe" target="_blank" ion-button outline>Watch Movie</a></p>
+        </div>
+        <ul class="media-tags-wrapper" *ngIf="mediaData.genres">
+          <li class="media-tags" *ngFor="let tags of mediaData.genres">
+            <a href="javascript:;"><ion-icon name="pricetag"></ion-icon> {{tags.name}}</a>
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="mediaCredits">
+      <ion-card-content *ngIf="mediaCredits.cast">
+        <h4>Cast</h4>
+        <ion-slides slidesPerView="2.5" spaceBetween="10" centeredSlides="true" initialSlide="1">
+          <ion-slide *ngFor="let cast of mediaCredits.cast; let i = index">
+            <img [src]="cast.profile_path" [alt]="cast.name" />
+            <h4>{{ cast.name }} <br><i>as</i><br> <strong>{{ cast.character }}</strong></h4>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="mediaCredits">
+      <ion-card-content *ngIf="mediaCredits.crew">
+        <h4>Crew</h4>
+        <ion-slides slidesPerView="2.5" spaceBetween="10" centeredSlides="true" initialSlide="1">
+          <ion-slide *ngFor="let crew of mediaCredits.crew; let i = index">
+            <img [src]="crew.profile_path" [alt]="crew.name" />
+            <h4>{{ crew.name }} <br> <strong>"{{ crew.job }}"</strong></h4>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="mediaReview">
+      <ion-card-content *ngIf="mediaReview.results.length > 0">
+        <h4>Reviews</h4>
+        <div class="media-reviews-wrapper">
+          <div class="review" *ngFor="let review of mediaReview.results; let i = index">
+            <h5>{{ review.author }}</h5>
+            <p>{{ review.content }}</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="similar-movies-wrapper" *ngIf="similarMedia && similarMedia.results.length > 0">
+      <h4 padding-horizontal>Similar Movies</h4>
+      <ion-slides slidesPerView="1.2" spaceBetween="5" autoplay="8000" centeredSlides="true">
+        <ion-slide *ngFor="let similarMedia of similarMedia.results; let i = index">
+            <!-- <mdb-similar-media-card [mediaData]="similarMedia" [mediaType]="'movies'" [isLogin]="isLogin"></mdb-similar-media-card> -->
+            <mdb-similar-media-card [mediaData]="similarMedia" [mediaType]="'movies'" [isLogin]="isLogin"></mdb-similar-media-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

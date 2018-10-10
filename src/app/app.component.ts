@@ -5,7 +5,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import * as $ from "jquery";
 import { LoginPage } from '../pages/login/login';
@@ -36,9 +35,7 @@ export class MyApp implements OnInit {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
     ];
-
   }
 
   ngOnInit(){

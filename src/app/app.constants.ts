@@ -1,4 +1,5 @@
 export class Constants {
+
   public static get Default_Language(): string {
     return 'en-IN';
   }
@@ -21,4 +22,9 @@ export class Constants {
 
     // https://secure.gravatar.com/avatar/557dee95e4b8498738cdad86f7f8acce.jpg?s=64
   }
+
+  public static Watch_Movie_URL(): string {
+    return 'https://videospider.in/getvideo?key=qByvolqgbwKYzcs0&video_id=';
+  }
+
 }

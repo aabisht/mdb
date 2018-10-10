@@ -13,7 +13,7 @@
         [src]="mediaData.poster_path" [alt]="mediaData.title" />
     </div>
     <div class="mdb-card-title-wrapper">
-        <h3 class="title">{{ mediaData.title }}</h3>
+        <h3 class="title" (click)="openMediaDetailModal(mediaData.id, mediaType)">{{ mediaData.title }}</h3>
         <!-- <ion-icon [name]="(mediaType == 'movies') ? 'film' : 'desktop outline' "></ion-icon> -->
     </div>
   </div>

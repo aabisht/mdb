@@ -11,7 +11,6 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,23 +18,23 @@ import { MovieGenresListService } from '../services/Genres/movie-genres-list.ser
 import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.service';
 import { HomeModule } from '../pages/home/home.module';
 import { LoginModule } from '../pages/login/login.module';
+import { MediaDetailModule } from '../pages/media-detail/media-detail.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    ListPage,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     HomeModule,
-    LoginModule
+    LoginModule,
+    MediaDetailModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ListPage,
   ],
   providers: [
     StatusBar,

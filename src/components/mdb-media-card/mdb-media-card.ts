@@ -1,9 +1,10 @@
 import { AddToWatchlistService } from './../../services/account/add-to-watchlist/add-to-watchlist.service';
 import { Component, Input } from '@angular/core';
 import { HomePosterMedia } from '../../interface/home-poster-media';
-import { ToastController } from 'ionic-angular';
+import { ToastController, ModalController } from 'ionic-angular';
 import { IAccountDetail } from '../../interface/account-detail';
 import { MarkAsFavoriteService } from '../../services/account/mark-as-favorite/mark-as-favorite.service';
+import { MediaDetail } from '../../pages/media-detail/media-detail';
 
 @Component({
   selector: 'mdb-media-card',
@@ -16,7 +17,8 @@ export class MdbMediaCardComponent {
 
   constructor(private _addToWatchlist: AddToWatchlistService,
               private _toastCtrl: ToastController,
-              private _markAsFavoriteService: MarkAsFavoriteService) {}
+              private _markAsFavoriteService: MarkAsFavoriteService,
+              public _modalCtrl: ModalController) {}
 
   ngOnChanges(): void {
     if (!this.mediaData.title || !this.mediaData.original_title) {
@@ -69,5 +71,10 @@ export class MdbMediaCardComponent {
     });
 
     toast.present();
+  }
+
+  openMediaDetailModal(mediaId: number, mediaType: string) {
+    let modal = this._modalCtrl.create(MediaDetail, {mediaId: mediaId, mediaType: mediaType});
+    modal.present();
   }
 }

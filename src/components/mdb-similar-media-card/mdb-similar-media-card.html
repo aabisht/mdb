@@ -1,0 +1,15 @@
+<ion-card class="similar-media-card" (click)="openMediaDetailModal(mediaData.id, mediaType)">
+    <img [src]="mediaData.backdrop_path" [alt]="mediaData.title">
+    <ion-card-content>
+      <ion-card-title>
+        <div class="poster-img-wrapper">
+          <img [src]="mediaData.poster_path" [alt]="mediaData.title">
+        </div>
+        <div class="title">{{ mediaData.title }}</div>
+        <div class="vote-avg"><ion-icon name="heart"></ion-icon> {{ mediaData.vote_average }}</div>
+      </ion-card-title>
+      <div class="media-overview">
+          <p>{{ mediaData.overview }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>

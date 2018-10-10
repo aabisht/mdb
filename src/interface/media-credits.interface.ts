@@ -1,10 +1,10 @@
-export interface MediaCredits {
+export interface IMediaCredits {
   id: number;
-  cast: Cast[];
-  crew: Crew[];
+  cast: ICast[];
+  crew: ICrew[];
 }
 
-export interface Crew {
+export interface ICrew {
   credit_id: string;
   department: string;
   gender: number;
@@ -14,7 +14,7 @@ export interface Crew {
   profile_path?: string;
 }
 
-export interface Cast {
+export interface ICast {
   cast_id: number;
   character: string;
   credit_id: string;

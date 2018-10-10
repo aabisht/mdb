@@ -1,0 +1,47 @@
+.similar-media-card {
+  .poster-img-wrapper {
+    width: 40%;
+    margin: -30% auto 15px;
+  }
+
+  .media-overview {
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    .title {
+      margin-bottom: 5px;
+    }
+    .vote-avg {
+      color: $heart-color;
+      font-size: 14px;
+      line-height: 22px;
+
+      > ion-icon {
+        margin-right: 5px;
+        font-size: 22px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.media-reviews-wrapper {
+  .review {
+    margin: 15px 0;
+    border-bottom: 1px solid lighten(color($colors, dark), 70%);
+    padding-bottom: 15px;
+
+    > h5 {
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 1.6rem;
+      text-transform: capitalize;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-export interface MediaDetail {
+export interface IMediaDetail {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection?: any;
@@ -17,6 +17,7 @@ export interface MediaDetail {
   release_date: string;
   revenue: number;
   runtime: number;
+  runtime_string: string;
   spoken_languages: Spokenlanguage[];
   status: string;
   tagline: string;
