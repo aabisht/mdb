@@ -19,6 +19,7 @@ import { TVShowGenresListService } from '../services/Genres/tv-show-genres-list.
 import { HomeModule } from '../pages/home/home.module';
 import { LoginModule } from '../pages/login/login.module';
 import { MediaDetailModule } from '../pages/media-detail/media-detail.module';
+import { MultiSearchService } from '../services/search/multi-search/multi-search.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MediaDetailModule } from '../pages/media-detail/media-detail.module';
     ExternalIdService,
     MovieGenresListService,
     TVShowGenresListService,
+    MultiSearchService
   ]
 })
 export class AppModule {}

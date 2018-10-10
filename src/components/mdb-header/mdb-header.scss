@@ -38,3 +38,30 @@
     font-size: 2rem;
   }
 }
+
+
+.header-search-bar {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+
+.header-search-result-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9;
+
+  .media-type {
+    text-transform: uppercase;
+    color: $media-search-type-color;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}

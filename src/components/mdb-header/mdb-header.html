@@ -9,10 +9,27 @@
     <ion-title class="mdb-logo-wrapper"><i class="mdb-icon-logo"></i></ion-title>
 
     <ion-buttons end>
-      <button ion-button end>
+      <button ion-button end (click)="showSearchBar('header-search-bar')">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
-
+    <ion-searchbar class="header-search-bar" [ngClass]="{'active': showSearch}" (ionInput)="getSearchItems($event)" [(ngModel)]="searchValue"></ion-searchbar>
   </ion-navbar>
 </ion-header>
+<ion-content padding class="has-header header-search-result-wrapper" *ngIf="showSearch && searchData">
+  <ion-list *ngIf="searchData.length == 0">
+      <ion-item>
+        <h2>No Result Found</h2>
+      </ion-item>
+  </ion-list>
+  <ion-list *ngIf="searchData">
+    <ion-item *ngFor="let item of searchData" (click)="openMediaDetailModal(item.id, item.media_type)">
+      <ion-avatar item-start>
+        <img [src]="item.poster_path" [alt]="item.name">
+      </ion-avatar>
+      <h2 class="media-title" *ngIf="item.name">{{ item.name }}</h2>
+      <h2 class="media-title" *ngIf="item.title">{{ item.title }}</h2>
+      <p class="media-type">{{ item.media_type }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

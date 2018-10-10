@@ -85,7 +85,9 @@ export class MediaDetail implements OnInit {
       .subscribe(
         data => {
           this.mediaVideo = data.results;
-          this.media_traler_iframe = this._embedService.embed_youtube(this.mediaVideo[0].key + '?autoplay=1&loop=1&rel=0&controls=0&showinfo=0', {attr: {allow: 'autoplay=1; loop=1; encrypted-media', frameborder: '0'}});
+          if(this.mediaVideo.length > 0) {
+            this.media_traler_iframe = this._embedService.embed_youtube(this.mediaVideo[0].key + '?autoplay=1&loop=1&rel=0&controls=0&showinfo=0', {attr: {allow: 'autoplay=1; loop=1; encrypted-media', frameborder: '0'}});
+          }
         },
         error => {
           console.log('Error: ' + error);
